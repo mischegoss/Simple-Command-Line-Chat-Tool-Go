@@ -9,12 +9,15 @@ import (
 
 	cohere "github.com/cohere-ai/cohere-go/v2"
 	cohereclient "github.com/cohere-ai/cohere-go/v2/client"
+
+	_ "github.com/joho/godotenv/autoload"
 )
 
-var client = cohereclient.NewClient(cohereclient.WithToken("<<API KEY>>"))
 var reader = bufio.NewReader(os.Stdin)
 var question (string)
 var anotherQuestion (string)
+var apiKey = os.Getenv("cohere_key")
+var client = cohereclient.NewClient(cohereclient.WithToken(apiKey))
 
 func welcomeUser() {
 	fmt.Println("Welcome to Ask Me Anything - AI Edition")
@@ -67,6 +70,7 @@ func moreQuestion() {
 
 func main() {
 	welcomeUser()
-	interact()
+	grabQuestion()
+	printResponse()
 	moreQuestion()
 }
