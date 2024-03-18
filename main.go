@@ -11,7 +11,7 @@ import (
 	cohereclient "github.com/cohere-ai/cohere-go/v2/client"
 )
 
-var client = cohereclient.NewClient(cohereclient.WithToken("prCT9e0FiD1a79YtwnnHGJwGd0SlerSikMSRgmYo"))
+var client = cohereclient.NewClient(cohereclient.WithToken("<<API KEY>>"))
 var reader = bufio.NewReader(os.Stdin)
 var question (string)
 var anotherQuestion (string)
@@ -50,23 +50,19 @@ func moreQuestion() {
 		anotherQuestion, err := reader.ReadString('\n')
 		if err != nil {
 			fmt.Println("Error reading input:", err)
-			return // Handle the error gracefully
+			return
 		}
 
 		anotherQuestion = strings.ToLower(strings.TrimSpace(anotherQuestion))
 
 		if anotherQuestion == "y" {
-			interact()
+			grabQuestion()
+			printResponse()
 		} else {
 			fmt.Println("Goodbye.")
 			break
 		}
 	}
-}
-
-func interact() {
-	grabQuestion()
-	printResponse()
 }
 
 func main() {
