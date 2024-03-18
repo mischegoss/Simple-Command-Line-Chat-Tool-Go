@@ -18,5 +18,6 @@ require (
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
+	github.com/ttacon/chalk v0.0.0-20160626202418-22c06c80ed31 // indirect
 	golang.org/x/sys v0.12.0 // indirect
 )
