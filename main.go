@@ -9,68 +9,54 @@ import (
 
 	cohere "github.com/cohere-ai/cohere-go/v2"
 	cohereclient "github.com/cohere-ai/cohere-go/v2/client"
-
 	_ "github.com/joho/godotenv/autoload"
 )
 
 var reader = bufio.NewReader(os.Stdin)
-var question (string)
-var anotherQuestion (string)
-var apiKey = os.Getenv("cohere_key")
+var apiKey = os.Getenv("COHERE_KEY")
 var client = cohereclient.NewClient(cohereclient.WithToken(apiKey))
 
 func welcomeUser() {
 	fmt.Println("Welcome to Ask Me Anything - AI Edition")
 }
 
-func grabQuestion() string {
+func askQuestion() string {
 	fmt.Print("What is your question? ")
-	input, _ := reader.ReadString('\n')
-	question = input
-	return strings.TrimSpace(question)
+	text, _ := reader.ReadString('\n')
+	return strings.TrimSpace(text)
 }
 
-func printResponse() {
-	response, err := client.Chat(
-		context.TODO(),
-		&cohere.ChatRequest{
-			Message: question,
-		},
-	)
-
+func generateResponse(question string) string {
+	response, err := client.Chat(context.TODO(), &cohere.ChatRequest{Message: question})
 	if err != nil {
-		fmt.Println("Error:", err)
-		return
+		fmt.Println("Error generating response:", err)
+		fmt.Println("Error occurred. Please try again.")
 	}
-
-	fmt.Println("Here is the response to the question ", question)
-	fmt.Println(response.Text)
+	return response.Text
 }
 
-func moreQuestion() {
-	for {
-		fmt.Print("Do you have another question? (y/n) ")
-		anotherQuestion, err := reader.ReadString('\n')
-		if err != nil {
-			fmt.Println("Error reading input:", err)
-			return
-		}
+func printResponse(question, response string) {
+	fmt.Println("Here's the response to the question:", question)
+	fmt.Println(response)
+}
 
-		anotherQuestion = strings.ToLower(strings.TrimSpace(anotherQuestion))
-
-		if anotherQuestion == "y" {
-			grabQuestion()
-			printResponse()
-		} else {
-			fmt.Println("Goodbye.")
-			break
-		}
-	}
+func askForMoreQuestions() bool {
+	fmt.Print("Do you have another question? (y/n) ")
+	text, _ := reader.ReadString('\n')
+	return strings.ToLower(strings.TrimSpace(text)) == "y"
 }
 
 func main() {
 	welcomeUser()
-	grabQuestion()
-	printResponse()
-	moreQuestion()
+
+	for {
+		question := askQuestion()
+		response := generateResponse(question)
+		printResponse(question, response)
+
+		if !askForMoreQuestions() {
+			fmt.Println("Goodbye!")
+			break
+		}
+	}
 }
