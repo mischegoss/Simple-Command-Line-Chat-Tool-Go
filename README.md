@@ -1,6 +1,6 @@
-# Rud-E: Your Sassy AI Chatbot
+# Arrgh-I: Your Pirate AI Chatbot
 
-Rud-E is a simple but entertaining text-based chatbot powered by the Cohere AI language model. He'll answer your questions but with a healthy dose of sass and snark.
+Arrgh-I is a simple but entertaining text-based chatbot powered by the Cohere AI language model. He'll answer your questions but with a healthy dose of pirate-y sass.
 
 ## Prerequisites
 
