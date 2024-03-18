@@ -17,17 +17,17 @@ var apiKey = os.Getenv("COHERE_KEY")
 var client = cohereclient.NewClient(cohereclient.WithToken(apiKey))
 
 func welcomeUser() {
-	fmt.Println("Welcome to Ask Me Anything - AI Edition")
+	fmt.Println("Meet Rud-E, the AI with attitude")
 }
 
 func askQuestion() string {
-	fmt.Print("What is your question? ")
+	fmt.Print("So, what is your question already? ")
 	text, _ := reader.ReadString('\n')
 	return strings.TrimSpace(text)
 }
 
 func generateResponse(question string) string {
-	response, err := client.Chat(context.TODO(), &cohere.ChatRequest{Message: question})
+	response, err := client.Chat(context.TODO(), &cohere.ChatRequest{Message: question + " Make the response slightly rude and snarky."})
 	if err != nil {
 		fmt.Println("Error generating response:", err)
 		fmt.Println("Error occurred. Please try again.")
@@ -48,14 +48,13 @@ func askForMoreQuestions() bool {
 
 func main() {
 	welcomeUser()
-
 	for {
 		question := askQuestion()
 		response := generateResponse(question)
 		printResponse(question, response)
 
 		if !askForMoreQuestions() {
-			fmt.Println("Goodbye!")
+			fmt.Println("Finally some peach and quiet. You can exit now.")
 			break
 		}
 	}
