@@ -4,12 +4,12 @@ Arrgh-I is a simple but entertaining text-based chatbot powered by the Cohere AI
 
 ## Prerequisites
 
-* A Cohere AI account and API key (https://cohere.com/). A free trial is fine for this simple implementation.
+* A Cohere AI account and [API key](https://cohere.com/). A free trial is fine for this simple implementation.
 * The Go programming language installed (https://go.dev/)
 
 ### Setup
 
-1. Clone this repository: https://github.com/mischegoss/Simple-Command-Line-Chat-Tool-Go.git(https://github.com/mischegoss/Simple-Command-Line-Chat-Tool-Go.git)
+1. Clone this repository: [https://github.com/mischegoss/Simple-Command-Line-Chat-Tool-Go.git](https://github.com/mischegoss/Simple-Command-Line-Chat-Tool-Go.git)
 
 2. Create a .env file in the project directory and add the following line, replacing YOUR_API_KEY with your actual Cohere API key:
 
