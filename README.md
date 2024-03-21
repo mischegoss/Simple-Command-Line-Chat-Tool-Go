@@ -23,7 +23,7 @@ COHERE_KEY=YOUR_API_KEY
 
 ### How to Interact
 
-Type your questions after teh prompt and press Enter. The program will end when you type 'n' at the "Do you have another question?" prompt.
+Type your questions after the prompt and press Enter. The program will end when you type 'n' at the "Do you have another question?" prompt.
 
 ## Notes:
 
