@@ -1,6 +1,6 @@
 # Arrgh-I: Your Pirate AI Chatbot
 
-Arrgh-I is a simple but entertaining text-based chatbot powered by the Cohere AI language model. He'll answer your questions but with a healthy dose of pirate-y sass.
+Arrgh-I is a simple but entertaining text-based chatbot powered by the Cohere AI language model. They'll answer your questions but with a healthy dose of pirate-y sass.
 
 ## Prerequisites
 
