@@ -23,7 +23,7 @@ var client = cohereclient.NewClient(cohereclient.WithToken(apiKey))
 // Creates reader object that will grab users' input in CLI
 var reader = bufio.NewReader(os.Stdin)
 
-// Defines styles uses with chalk
+// Defines styles used with chalk
 var yellowOnBlack = chalk.Yellow.NewStyle().WithBackground(chalk.Black).WithTextStyle(chalk.Bold).
 	Style
 var blackOnYellow = chalk.Black.NewStyle().WithBackground(chalk.Yellow).WithTextStyle(chalk.Bold).
