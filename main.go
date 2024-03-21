@@ -42,11 +42,12 @@ func generateResponse(question string) string {
 
 func printResponse(question, response string) {
 	fmt.Println(yellowOnBlack("Blimey, here's the answer to the riddle you've been seeking: " + question))
-	fmt.Println(response)
+	fmt.Println(blackOnYellow(response))
 }
 
+// Asks question and eturns true/false outcome 'y/n' 
 func askForMoreQuestions() bool {
-	fmt.Print(yellowOnBlack("Arr, got another riddle for me, have ye?  (y/n) "))
+	fmt.Print(yellowOnBlack("Arr, got another riddle for me, have ye? (y/n) "))
 	text, _ := reader.ReadString('\n')
 	return strings.ToLower(strings.TrimSpace(text)) == "y"
 }
@@ -59,7 +60,7 @@ func main() {
 		printResponse(question, response)
 
 		if !askForMoreQuestions() {
-			fmt.Println("Be gone with ye, then! And watch out for sharks, they like the taste o' land fools.")
+			fmt.Println(yellowOnBlack("Be gone with ye, then! And watch out for sharks, they like the taste o' land fools."))
 			break
 		}
 	}
